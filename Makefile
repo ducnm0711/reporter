@@ -14,11 +14,11 @@ buildall: build buildlinux
 
 .PHONY: build
 build: 
-	go install -v github.com/IzakMarais/reporter/cmd/grafana-reporter
+	go install -v github.com/ducnm0711/reporter/cmd/grafana-reporter
 
 .PHONY: buildlinux 
 buildlinux: 	
-	cmd //v //c "set GOOS=linux&&go install -v github.com/IzakMarais/reporter/cmd/grafana-reporter"
+	cmd //v //c "set GOOS=linux&&go install -v github.com/ducnm0711/reporter/cmd/grafana-reporter"
 
 .PHONY: clean
 clean: 	
