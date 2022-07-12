@@ -1,20 +1,20 @@
 # build
-FROM golang:1.14.7-alpine3.12 AS build
+FROM golang:1.19-rc-alpine3.15 AS build
 WORKDIR /go/src/${owner:-github.com/IzakMarais}/reporter
 RUN apk update && apk add make git
 ADD . .
 RUN make build
 
 # create image
-FROM alpine:3.12
+FROM alpine:3.15
 COPY util/texlive.profile /
 
-RUN PACKAGES="wget libswitch-perl" \
+RUN PACKAGES="wget perl-switch fontconfig fontconfig-dev" \
         && apk update \
         && apk add $PACKAGES \
         && apk add ca-certificates \
         && wget -qO- \
-          "https://github.com/yihui/tinytex/raw/master/tools/install-unx.sh" | \
+          "https://raw.githubusercontent.com/rstudio/tinytex/main/tools/install-unx.sh" | \
           sh -s - --admin --no-path \
         && mv ~/.TinyTeX /opt/TinyTeX \
         && /opt/TinyTeX/bin/*/tlmgr path add \
