@@ -21,11 +21,13 @@ package report
 const defaultGridTemplate = `
 %use square brackets as golang text templating delimiters
 \documentclass{article}
+\usepackage{pdflscape}
 \usepackage{graphicx}
 \usepackage[margin=0.5in]{geometry}
 
 \graphicspath{ {images/} }
 \begin{document}
+\begin{landscape}
 \title{[[.Title]] [[if .VariableValues]] \\ \large [[.VariableValues]] [[end]] [[if .Description]] \\ \small [[.Description]] [[end]]}
 \date{[[.FromFormatted]]\\to\\[[.ToFormatted]]}
 \maketitle
@@ -41,5 +43,6 @@ const defaultGridTemplate = `
 [[end]][[end]]
 
 \end{center}
+\end{landscape}
 \end{document}
 `
