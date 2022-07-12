@@ -14,7 +14,7 @@ buildall: build buildlinux
 
 .PHONY: build
 build: 
-	go install -v github.com/ducnm0711/reporter/cmd/grafana-reporter@latest
+	go install -v github.com/ducnm0711/reporter/cmd/grafana-reporter
 
 .PHONY: buildlinux 
 buildlinux: 	
@@ -26,10 +26,10 @@ clean:
 
 .PHONY: docker-build
 docker-build:
-	@docker build -t ducnm0711/grafana-reporter:2.3.0 -t ducnm0711/grafana-reporter:latest .
+	@docker build -t verces/grafana-reporter:2.3.2 ./
 
 docker-push:
-	@docker push izakmarais/grafana-reporter
+	@docker push verces/grafana-reporter
 
 .PHONY: test
 test: $(TARGET)
